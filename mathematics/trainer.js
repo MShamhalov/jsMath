@@ -8,8 +8,8 @@ const startTime = new Date().getTime()
 let fst, scd
 while (i < 10) {
     if (j == false) {
-        fst = generateRandom(10, 100);
-        scd = generateRandom(10, 100);
+        fst = generateRandom(conf.min_number, conf.max_number);
+        scd = generateRandom(conf.min_number, conf.max_number);
         if (conf.operation === '-' && fst < scd) {
             [fst, scd] = [scd, fst]
         }
