@@ -68,7 +68,7 @@ function calculate(firstNum, secondNum, sign) {
         resultElement = eval(`${firstNum} ${sign} ${secondNum}`);
     }
     secondElement = secondNum;
-    resultString = `${firstElement} ${sign} ${secondElement} = (${resultElement}) `;
+    resultString = `${firstElement} ${sign} ${secondElement} =  `;
 
     return {resultElement, resultString}
 }

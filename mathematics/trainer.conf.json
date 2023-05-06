@@ -1,84 +1,96 @@
 {
 	"config":{
 		"difficulty": "hard",
-		"operation": "-"
+		"operation": "/"
 	},
 	"low":{
 		"plus":{
 			"sign":"+",
 			"min_number": 10,
 			"max_number": 100,
-			"first_number_is_larger": true
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		},
 		"minus":{
 			"sign":"-",
 			"min_number": 10,
 			"max_number": 100,
-			"first_number_is_larger": true
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		},
 		"multiplication":{
 			"sign":"*",
 			"min_number": 2,
 			"max_number": 10,
-			"first_number_is_larger": true
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		},
 		"division":{
 			"sign":"/",
 			"min_number": 2,
 			"max_number": 10,
-			"first_number_is_larger": true
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		}
 	},
 	"medium":{
 		"plus":{
 			"sign":"+",
-			"min_number": 100,
-			"max_number": 1000,
-			"first_number_is_larger": false
+			"min_number": 2,
+			"max_number": 10000,
+			"first_number_is_larger": false,
+			"number_of_tasks": 20
 		},
 		"minus":{
 			"sign":"-",
-			"min_number": 100,
-			"max_number": 1000,
-			"first_number_is_larger": false
+			"min_number": 2,
+			"max_number": 10000,
+			"first_number_is_larger": false,
+			"number_of_tasks": 20
 		},
 		"multiplication":{
 			"sign":"*",
-			"min_number": 10,
-			"max_number": 100,
-			"first_number_is_larger": false
+			"min_number": 2,
+			"max_number": 1000,
+			"first_number_is_larger": false,
+			"number_of_tasks": 20
 		},
 		"division":{
 			"sign":"/",
-			"min_number": 10,
+			"min_number": 2,
 			"max_number": 100,
-			"first_number_is_larger": false
+			"first_number_is_larger": true,
+			"number_of_tasks": 20
 		}
 	},
 	"hard":{
 		"plus":{
 			"sign":"+",
 			"min_number": 1000,
-			"max_number": 10000,
-			"first_number_is_larger": false
+			"max_number": 1000000,
+			"first_number_is_larger": false,
+			"number_of_tasks": 30
 		},
 		"minus":{
 			"sign":"-",
 			"min_number": 1000,
-			"max_number": 10000,
-			"first_number_is_larger": false
+			"max_number": 1000000,
+			"first_number_is_larger": false,
+			"number_of_tasks": 30
 		},
 		"multiplication":{
 			"sign":"*",
 			"min_number": 100,
 			"max_number": 1000,
-			"first_number_is_larger": false
+			"first_number_is_larger": false,
+			"number_of_tasks": 30
 		},
 		"division":{
 			"sign":"/",
 			"min_number": 10,
-			"max_number": 100,
-			"first_number_is_larger": false
+			"max_number": 1000,
+			"first_number_is_larger": true,
+			"number_of_tasks": 30
 		}
 	}
 }
