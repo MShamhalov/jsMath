@@ -1,7 +1,84 @@
 {
 	"config":{
-		"operation": "-",
-		"min_number": 10,
-		"max_number": 100
+		"difficulty": "hard",
+		"operation": "-"
+	},
+	"low":{
+		"plus":{
+			"sign":"+",
+			"min_number": 10,
+			"max_number": 100,
+			"first_number_is_larger": true
+		},
+		"minus":{
+			"sign":"-",
+			"min_number": 10,
+			"max_number": 100,
+			"first_number_is_larger": true
+		},
+		"multiplication":{
+			"sign":"*",
+			"min_number": 2,
+			"max_number": 10,
+			"first_number_is_larger": true
+		},
+		"division":{
+			"sign":"/",
+			"min_number": 2,
+			"max_number": 10,
+			"first_number_is_larger": true
+		}
+	},
+	"medium":{
+		"plus":{
+			"sign":"+",
+			"min_number": 100,
+			"max_number": 1000,
+			"first_number_is_larger": false
+		},
+		"minus":{
+			"sign":"-",
+			"min_number": 100,
+			"max_number": 1000,
+			"first_number_is_larger": false
+		},
+		"multiplication":{
+			"sign":"*",
+			"min_number": 10,
+			"max_number": 100,
+			"first_number_is_larger": false
+		},
+		"division":{
+			"sign":"/",
+			"min_number": 10,
+			"max_number": 100,
+			"first_number_is_larger": false
+		}
+	},
+	"hard":{
+		"plus":{
+			"sign":"+",
+			"min_number": 1000,
+			"max_number": 10000,
+			"first_number_is_larger": false
+		},
+		"minus":{
+			"sign":"-",
+			"min_number": 1000,
+			"max_number": 10000,
+			"first_number_is_larger": false
+		},
+		"multiplication":{
+			"sign":"*",
+			"min_number": 100,
+			"max_number": 1000,
+			"first_number_is_larger": false
+		},
+		"division":{
+			"sign":"/",
+			"min_number": 10,
+			"max_number": 100,
+			"first_number_is_larger": false
+		}
 	}
 }
