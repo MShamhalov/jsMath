@@ -6,8 +6,9 @@ const conf = getCurrentConfig(rawConf);
 let i = 0
 let j = false
 const startTime = new Date().getTime()
-let fst, scd
-while (i < 10) {
+let fst, scd;
+
+while (i < conf.numberOfTasks) {
     if (j == false) {
         fst = generateRandom(conf.min_number, conf.max_number);
         scd = generateRandom(conf.min_number, conf.max_number);
@@ -15,9 +16,9 @@ while (i < 10) {
             [fst, scd] = [scd, fst]
         }
     }
-    let result = eval(`${fst} ${conf.sign} ${scd}`);
-    const resultCandidate = prompt(`${fst} ${conf.sign} ${scd} = (${result}) `);
-    if (result != resultCandidate) {
+    calculationElements = calculate(fst, scd, conf.sign);
+    resultCandidate = Number(prompt(calculationElements.resultString));
+    if (calculationElements.resultElement !== resultCandidate) {
         console.log('Wrong, try again!')
         j = true
         continue
@@ -32,7 +33,7 @@ function generateRandom(min, max) {
     let rand = Math.random()
     rand = Math.floor(rand * diff)
     rand = rand + min
-    
+
     return rand
 }
 
@@ -41,15 +42,33 @@ function getCurrentConfig(rawJSONConf) {
     const sign = rawJSONConf.config.operation;
     let operation;
 
-    if (sign === "+") {
-        operation = "plus";   
-    } else if (sign === "-") {
-        operation = "minus";   
-    } else if (sign === "*") {
-        operation = "multiplication";   
-    } else if (sign === "/") {
-        operation = "division";   
+    if (sign === '+') {
+        operation = 'plus';   
+    } else if (sign === '-') {
+        operation = 'minus';   
+    } else if (sign === '*') {
+        operation = 'multiplication';   
+    } else if (sign === '/') {
+        operation = 'division';   
     }
 
     return rawJSONConf[difficulty][operation];
+}
+
+function calculate(firstNum, secondNum, sign) {
+    let firstElement;
+    let secondElement;
+    let resultElement;
+
+    if (sign === '/') {
+        firstElement = eval(`${firstNum} * ${secondNum}`);
+        resultElement = firstNum;
+    } else {
+        firstElement = firstNum;
+        resultElement = eval(`${firstNum} ${sign} ${secondNum}`);
+    }
+    secondElement = secondNum;
+    resultString = `${firstElement} ${sign} ${secondElement} = (${resultElement}) `;
+
+    return {resultElement, resultString}
 }
