@@ -87,16 +87,16 @@ function supplement_result(user, sign, difficulty, number_of_tasks, calc_time) {
     }
     let tableHeader = 'User;Current date and time;Sign;Difficulty;Number of tasks;Calculate Time\r\n';
     let content = `${user};${new Date().toLocaleString()};${sign};${difficulty};${number_of_tasks};${calc_time}\r\n`;
-    if (fs.existsSync(results_dir + `/user_${user}.progress.csv`)) {
+    if (fs.existsSync(results_dir + `/${user}.progress.csv`)) {
         try {
-            fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, content, { flag: 'as' });
+            fs.writeFileSync(results_dir + `/${user}.progress.csv`, content, {flag: 'as'});
         } catch (err) {
             console.error(err);
         } 
     } else {
         try {
-            fs.writeFileSync(results_dir + `/${user}.progress.csv`, tableHeader, { flag: 'as' });
-            fs.writeFileSync(results_dir + `/${user}.progress.csv`, content, { flag: 'as' });
+            fs.writeFileSync(results_dir + `/${user}.progress.csv`, tableHeader, {flag: 'as'});
+            fs.writeFileSync(results_dir + `/${user}.progress.csv`, content, {flag: 'as'});
         } catch (err) {
             console.error(err);
         } 
