@@ -32,7 +32,7 @@ while (i < conf.number_of_tasks) {
         console.log('Wrong, try again!')
         j = true
         continue
-    } else console.log("OK")
+    } else console.log(`Task (${i + 1}/${conf.number_of_tasks}) - OK`);
     j = false
     i += 1 
 }
