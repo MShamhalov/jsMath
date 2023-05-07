@@ -1,8 +1,4 @@
 {
-	"config":{
-		"difficulty": "hard",
-		"operation": "/"
-	},
 	"low":{
 		"plus":{
 			"sign":"+",

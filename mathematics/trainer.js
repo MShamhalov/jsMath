@@ -1,12 +1,22 @@
 const fs = require('fs');
 const prompt = require('../node_modules/prompt-sync')();
-const rawConf = JSON.parse(fs.readFileSync(__dirname+'/trainer.conf.json', {encoding: 'utf8', flag: 'r'}));
-const conf = getCurrentConfig(rawConf);
+
+const default_params = JSON.parse(fs.readFileSync(__dirname+'/default.json', {encoding: 'utf8', flag: 'r'})).default_params;
 
 let i = 0
 let j = false
 const startTime = new Date().getTime()
 let fst, scd;
+
+let current_user = prompt(`User (${default_params.user}): `); // You'r Name
+if (!current_user) current_user = default_params.user;
+let current_difficulty = prompt(`Difficulty (${default_params.difficulty}): `); // low, medium, hard
+if (!current_difficulty) current_difficulty = default_params.difficulty;
+let current_sign = prompt(`Sign (${default_params.sign}): `); // +, -, *, /
+if (!current_sign) current_sign = default_params.sign;
+
+const rawConf = JSON.parse(fs.readFileSync(__dirname+'/trainer.conf.json', {encoding: 'utf8', flag: 'r'}));
+const conf = getCurrentConfig(rawConf, current_difficulty, current_sign);
 
 while (i < conf.numberOfTasks) {
     if (j == false) {
@@ -26,7 +36,9 @@ while (i < conf.numberOfTasks) {
     j = false
     i += 1 
 }
-console.log(`Calculation time: ${(new Date().getTime()-startTime)/1000} sec`)
+const calc_time = (new Date().getTime()-startTime)/1000;
+console.log(`Calculation time: ${calc_time} sec`);
+supplement_result(current_user, conf.sign, current_difficulty, conf.numberOfTasks, calc_time);
 
 function generateRandom(min, max) {
     const diff = max - min
@@ -37,19 +49,14 @@ function generateRandom(min, max) {
     return rand
 }
 
-function getCurrentConfig(rawJSONConf) {
-    const difficulty = rawJSONConf.config.difficulty;
-    const sign = rawJSONConf.config.operation;
-    let operation;
-
-    if (sign === '+') {
-        operation = 'plus';   
-    } else if (sign === '-') {
-        operation = 'minus';   
+function getCurrentConfig(rawJSONConf, difficulty, sign) {
+    let operation = 'plus';
+    if (sign === '-') {
+        operation = 'minus';
     } else if (sign === '*') {
-        operation = 'multiplication';   
+        operation = 'multiplication';
     } else if (sign === '/') {
-        operation = 'division';   
+        operation = 'division';
     }
 
     return rawJSONConf[difficulty][operation];
@@ -68,7 +75,30 @@ function calculate(firstNum, secondNum, sign) {
         resultElement = eval(`${firstNum} ${sign} ${secondNum}`);
     }
     secondElement = secondNum;
-    resultString = `${firstElement} ${sign} ${secondElement} =  `;
+    resultString = `${firstElement} ${sign} ${secondElement} = `;
 
     return {resultElement, resultString}
+}
+
+function supplement_result(user, sign, difficulty, number_of_tasks, calc_time) {
+    let results_dir = __dirname +'/user_results';
+    if (!fs.existsSync(results_dir)){
+        fs.mkdirSync(results_dir);
+    }
+    let tableHeader = 'User;Sign;Difficulty;Number of tasks;Calculate Time\r\n';
+    let content = `${user};${sign};${difficulty};${number_of_tasks};${calc_time}\r\n`;
+    if (fs.existsSync(results_dir + `/user_${user}.progress.csv`)) {
+        try {
+            fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, content, { flag: 'as' });
+        } catch (err) {
+            console.error(err);
+        } 
+    } else {
+        try {
+            fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, tableHeader, { flag: 'as' });
+            fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, content, { flag: 'as' });
+        } catch (err) {
+            console.error(err);
+        } 
+    }
 }
