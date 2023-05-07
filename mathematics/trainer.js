@@ -5,7 +5,6 @@ const default_params = JSON.parse(fs.readFileSync(__dirname+'/default.json', {en
 
 let i = 0
 let j = false
-const startTime = new Date().getTime()
 let fst, scd;
 
 let current_user = prompt(`User (${default_params.user}): `); // You'r Name
@@ -18,6 +17,7 @@ if (!current_sign) current_sign = default_params.sign;
 const rawConf = JSON.parse(fs.readFileSync(__dirname+'/trainer.conf.json', {encoding: 'utf8', flag: 'r'}));
 const conf = getCurrentConfig(rawConf, current_difficulty, current_sign);
 
+const startTime = new Date().getTime();
 while (i < conf.number_of_tasks) {
     if (j == false) {
         fst = generateRandom(conf.min_number, conf.max_number);
@@ -85,8 +85,8 @@ function supplement_result(user, sign, difficulty, number_of_tasks, calc_time) {
     if (!fs.existsSync(results_dir)){
         fs.mkdirSync(results_dir);
     }
-    let tableHeader = 'User;Sign;Difficulty;Number of tasks;Calculate Time\r\n';
-    let content = `${user};${sign};${difficulty};${number_of_tasks};${calc_time}\r\n`;
+    let tableHeader = 'User;Current date and time;Sign;Difficulty;Number of tasks;Calculate Time\r\n';
+    let content = `${user};${new Date().toLocaleString()};${sign};${difficulty};${number_of_tasks};${calc_time}\r\n`;
     if (fs.existsSync(results_dir + `/user_${user}.progress.csv`)) {
         try {
             fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, content, { flag: 'as' });
@@ -95,8 +95,8 @@ function supplement_result(user, sign, difficulty, number_of_tasks, calc_time) {
         } 
     } else {
         try {
-            fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, tableHeader, { flag: 'as' });
-            fs.writeFileSync(results_dir + `/user_${user}.progress.csv`, content, { flag: 'as' });
+            fs.writeFileSync(results_dir + `/${user}.progress.csv`, tableHeader, { flag: 'as' });
+            fs.writeFileSync(results_dir + `/${user}.progress.csv`, content, { flag: 'as' });
         } catch (err) {
             console.error(err);
         } 
