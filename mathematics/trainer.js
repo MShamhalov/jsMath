@@ -18,7 +18,7 @@ if (!current_sign) current_sign = default_params.sign;
 const rawConf = JSON.parse(fs.readFileSync(__dirname+'/trainer.conf.json', {encoding: 'utf8', flag: 'r'}));
 const conf = getCurrentConfig(rawConf, current_difficulty, current_sign);
 
-while (i < conf.numberOfTasks) {
+while (i < conf.number_of_tasks) {
     if (j == false) {
         fst = generateRandom(conf.min_number, conf.max_number);
         scd = generateRandom(conf.min_number, conf.max_number);
