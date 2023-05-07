@@ -18,7 +18,7 @@ if (!current_sign) current_sign = default_params.sign;
 const rawConf = JSON.parse(fs.readFileSync(__dirname+'/trainer.conf.json', {encoding: 'utf8', flag: 'r'}));
 const conf = getCurrentConfig(rawConf, current_difficulty, current_sign);
 
-while (i < conf.numberOfTasks) {
+while (i < conf.number_of_tasks) {
     if (j == false) {
         fst = generateRandom(conf.min_number, conf.max_number);
         scd = generateRandom(conf.min_number, conf.max_number);
@@ -38,7 +38,7 @@ while (i < conf.numberOfTasks) {
 }
 const calc_time = (new Date().getTime()-startTime)/1000;
 console.log(`Calculation time: ${calc_time} sec`);
-supplement_result(current_user, conf.sign, current_difficulty, conf.numberOfTasks, calc_time);
+supplement_result(current_user, conf.sign, current_difficulty, conf.number_of_tasks, calc_time);
 
 function generateRandom(min, max) {
     const diff = max - min
