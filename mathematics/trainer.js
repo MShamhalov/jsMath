@@ -20,8 +20,8 @@ const conf = getCurrentConfig(rawConf, current_difficulty, current_sign);
 const startTime = new Date().getTime();
 while (i < conf.number_of_tasks) {
     if (j == false) {
-        fst = generateRandom(conf.min_number, conf.max_number);
-        scd = generateRandom(conf.min_number, conf.max_number);
+        fst = generateRandom(conf.first_number_min_number, conf.first_number_max_number);
+        scd = generateRandom(conf.second_number_min_number, conf.second_number_max_number);
         if (conf.first_number_is_larger && fst < scd) {
             [fst, scd] = [scd, fst]
         }
