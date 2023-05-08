@@ -35,6 +35,11 @@
 			"second_number_max_number": 10,
 			"first_number_is_larger": true,
 			"number_of_tasks": 10
+		},
+		"random":{
+			"sign":".",
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		}
 	},
 	"medium":{
@@ -73,6 +78,11 @@
 			"second_number_max_number": 100,
 			"first_number_is_larger": true,
 			"number_of_tasks": 20
+		},
+		"random":{
+			"sign":".",
+			"first_number_is_larger": true,
+			"number_of_tasks": 20
 		}
 	},
 	"hard":{
@@ -109,6 +119,11 @@
 			"first_number_max_number": 1000,
 			"second_number_min_number": 10,
 			"second_number_max_number": 1000,
+			"first_number_is_larger": true,
+			"number_of_tasks": 30
+		},
+		"random":{
+			"sign":".",
 			"first_number_is_larger": true,
 			"number_of_tasks": 30
 		}
