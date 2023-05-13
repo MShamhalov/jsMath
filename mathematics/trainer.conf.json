@@ -36,6 +36,15 @@
 			"first_number_is_larger": true,
 			"number_of_tasks": 10
 		},
+		"remainder":{
+			"sign": "|",
+			"first_number_min_number": 10,
+			"first_number_max_number": 100,
+			"second_number_min_number": 3,
+			"second_number_max_number": 10,
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
+		},
 		"random":{
 			"sign":".",
 			"first_number_is_larger": true,
@@ -45,19 +54,19 @@
 	"medium":{
 		"plus":{
 			"sign":"+",
-			"first_number_min_number": 2,
-			"first_number_max_number": 1000,
+			"first_number_min_number": 100,
+			"first_number_max_number": 10000,
 			"second_number_min_number": 2,
-			"second_number_max_number": 1000,
+			"second_number_max_number": 100,
 			"first_number_is_larger": false,
 			"number_of_tasks": 20
 		},
 		"minus":{
 			"sign":"-",
-			"first_number_min_number": 2,
+			"first_number_min_number": 100,
 			"first_number_max_number": 10000,
 			"second_number_min_number": 2,
-			"second_number_max_number": 10000,
+			"second_number_max_number": 100,
 			"first_number_is_larger": false,
 			"number_of_tasks": 20
 		},
@@ -73,15 +82,24 @@
 		"division":{
 			"sign":"/",
 			"first_number_min_number": 2,
-			"first_number_max_number": 100,
+			"first_number_max_number": 10,
 			"second_number_min_number": 2,
 			"second_number_max_number": 100,
-			"first_number_is_larger": true,
+			"first_number_is_larger": false,
 			"number_of_tasks": 20
+		},
+		"remainder":{
+			"sign": "|",
+			"first_number_min_number": 10,
+			"first_number_max_number": 100,
+			"second_number_min_number": 10,
+			"second_number_max_number": 100,
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		},
 		"random":{
 			"sign":".",
-			"first_number_is_larger": true,
+			"first_number_is_larger": false,
 			"number_of_tasks": 20
 		}
 	},
@@ -121,6 +139,15 @@
 			"second_number_max_number": 1000,
 			"first_number_is_larger": true,
 			"number_of_tasks": 30
+		},
+		"remainder":{
+			"sign": "|",
+			"first_number_min_number": 1000,
+			"first_number_max_number": 10000,
+			"second_number_min_number": 10,
+			"second_number_max_number": 100,
+			"first_number_is_larger": true,
+			"number_of_tasks": 10
 		},
 		"random":{
 			"sign":".",

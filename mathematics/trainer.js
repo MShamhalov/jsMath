@@ -22,8 +22,8 @@ const startTime = new Date().getTime();
 while (i < conf.number_of_tasks) {
     if (j == false) {
         if (signCandidate === '.') {
-            const signs = ["+", "-", "*", "/"];
-            let signIndex = generateRandom(0, 4);
+            const signs = ["+", "-", "*", "/", "|"];
+            let signIndex = generateRandom(0, signs.length);
             signCandidate = signs[signIndex];
             let smallConf = getCurrentConfig(rawConf, current_difficulty, signCandidate);
             fst = generateRandom(smallConf.first_number_min_number, smallConf.first_number_max_number);
@@ -71,6 +71,8 @@ function getCurrentConfig(rawJSONConf, difficulty, sign) {
         operation = 'multiplication';
     } else if (sign === '/') {
         operation = 'division';
+    } else if (sign === '|') {
+        operation = 'remainder';
     } else if (sign === '.') {
         operation = 'random';
     }
@@ -82,8 +84,10 @@ function calculate(firstNum, secondNum, sign) {
     let firstElement;
     let secondElement;
     let resultElement;
-
-    if (sign === '/') {
+    if (sign === '|') {
+        firstElement = firstNum;
+        resultElement = eval(`${firstNum} % ${secondNum}`);
+    } else if (sign === '/') {
         firstElement = eval(`${firstNum} * ${secondNum}`);
         resultElement = firstNum;
     } else {
